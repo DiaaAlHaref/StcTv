@@ -3,35 +3,40 @@ package StepDefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.After;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import pages.SubscriptionPage;
 
 public class SubscriptionsStepDefinition {
-    public WebDriver driver;
-    @Given("user navigate to stc tv subscription page")
-    public void userNavigateToStcTvSubscriptionPage(){
-        driver = new ChromeDriver();
-        driver.navigate().to("https://subscribe.stctv.com/bh-en");
-        driver.manage().window().maximize();
+    SubscriptionPage subscriptionPage = new SubscriptionPage();
+
+    @Given("user navigate to stc tv subscription page for {string}")
+    public void userNavigateToStcTvSubscriptionPage(String country) {
+        subscriptionPage.SelectNavigationUrl(country);
     }
 
-    @When("subscription page loaded successfully")
-    public void SubscriptionPageLoadedSuccessfully(){
-
+    @When("subscription page loaded successfully for {string}")
+    public void SubscriptionPageLoadedSuccessfully(String country) {
+        Assert.assertEquals(country, subscriptionPage.GetCountryName());
     }
 
     @Then("verify subscription page")
-    public void verifySubscriptionPage(){
-        String MonthlyPrice = driver.findElement(By.id("currency-lite")).getText();
-        Assert.assertEquals("2 BHD/month", MonthlyPrice);
+    public void verifySubscriptionPage() {
+        Assert.assertEquals("Choose Your Plan", subscriptionPage.GetSubscriptionPageTitle());
     }
 
-    @After
-    public void closeBrowser()
-    {
-        driver.quit();
+    @Then("verify the package {string}")
+    public void verifyThePackageTypes(String type) {
+        Assert.assertEquals(type, subscriptionPage.GetPackageTypes());
+    }
+
+
+    @Then("verify {string} for each country")
+    public void verifyCurrencyForEachCountry(String currency) {
+        Assert.assertEquals(currency, subscriptionPage.GetCurrency());
+    }
+
+    @Then("verify package types for each country")
+    public void verifyPackageTypesForEachCountry() {
+        Assert.assertEquals("[lite, classic, premium]", subscriptionPage.GetPackageTypes());
     }
 }
