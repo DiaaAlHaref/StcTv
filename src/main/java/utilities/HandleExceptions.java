@@ -32,17 +32,6 @@ public class HandleExceptions {
     }
 
     /**
-     * Method Handling if element not visible to take action
-     *
-     * @param e reference to get exception message , cause
-     */
-    /*public static void ElementNotVisibleExceptionHandling(ElementNotVisibleException e) {
-        System.out.println("Element not visible Exception");
-        System.out.println("Error Message is : " + e.getMessage());
-        System.out.println("Error Cause is : " + e.getCause());
-    }*/
-
-    /**
      * Method Handling if timeout exceed more time to execute ex. waitforelement to be visible, clickable
      *
      * @param e reference to get exception message , cause
@@ -91,7 +80,7 @@ public class HandleExceptions {
      *
      * @param e reference to get exception message , cause
      */
-    public static void ElementNotInteractableExceptionHandling(ElementNotInteractableException e) {
+    public static void ElementNotIntractableExceptionHandling(ElementNotInteractableException e) {
         System.out.println("Can't interact with the element");
         System.out.println("Error Message is : " + e.getMessage());
         System.out.println("Error Cause is : " + e.getCause());

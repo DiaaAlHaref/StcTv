@@ -1,8 +1,10 @@
 package utilities;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class UiActions {
@@ -73,10 +75,10 @@ public class UiActions {
      * @param locator    locator of element to wait for
      * @param typeOfWait type of the wait either "visible" or "clickable"
      */
-    /*public UiActions waitForElement(By locator, String typeOfWait) {
+    public UiActions waitForElement(By locator, String typeOfWait) {
 
         try {
-            wait = new WebDriverWait(driver, 5);
+            wait = new WebDriverWait(driver, Duration.ofMillis(4000));
             switch (typeOfWait) {
                 case "visible":
                     wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -86,12 +88,12 @@ public class UiActions {
                     break;
             }
         } catch (ElementNotInteractableException e) {
-            HandleExceptions.ElementNotInteractableExceptionHandling(e);
+            HandleExceptions.ElementNotIntractableExceptionHandling(e);
         } catch (TimeoutException e) {
             HandleExceptions.TimeoutExceptionHandling(e);
         }
         return this;
-    }*/
+    }
 
     /**
      * Handle type of actions performed on an element
@@ -111,7 +113,7 @@ public class UiActions {
         } catch (NullPointerException e) {
             HandleExceptions.NullPointerExceptionHandling(e);
         } catch (ElementNotInteractableException e) {
-            HandleExceptions.ElementNotInteractableExceptionHandling(e);
+            HandleExceptions.ElementNotIntractableExceptionHandling(e);
         }
 
     }
