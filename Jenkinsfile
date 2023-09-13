@@ -2,7 +2,7 @@ pipeline{
 
   agent { 
         docker { 
-            image  'windows'
+            image  'mcr.microsoft.com/windows'
                 }
         }
   tools { 
