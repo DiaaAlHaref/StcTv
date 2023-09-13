@@ -1,7 +1,12 @@
 pipeline{
 
-  agent any
-
+  "Windows": {
+        node('Windows') 
+        { 
+            jdk'OpenJDK17'
+        }
+    }
+  
   tools { 
         maven 'maven 3.9.4'  
     }
