@@ -9,6 +9,7 @@ pipeline{
     stage("build"){
       steps{
          echo 'build successful'
+          sh 'java --version'
       } 
     }
     stage("test"){
