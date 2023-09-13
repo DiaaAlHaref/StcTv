@@ -2,7 +2,7 @@ pipeline{
 
   agent { 
         docker { 
-            image  'windows10'
+            image  'windows'
                 }
         }
   tools { 
