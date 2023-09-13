@@ -3,21 +3,30 @@ package pages;
 import org.openqa.selenium.By;
 import utilities.UiActions;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Properties;
 
 public class SubscriptionPage {
-    String[] packageTypes = new String[]{"lite", "classic", "premium"};
 
-    public void SelectCountryUrl(String country) {
+    public static Properties prop = new Properties();
+    String[] packageTypes = new String[]{"lite", "classic", "premium"};
+    By countryButtonLocator = By.id("country-btn");
+    By subscriptionPageTitleLocator = By.xpath("//h2[@class='mobile-hidden' and contains(.,'Choose Your Plan')]");
+    By currencyLocator = By.id("currency-lite");
+    public void SelectCountryUrl(String country) throws IOException {
+        FileReader file = new FileReader(System.getProperty("user.dir")+"\\config\\config.properties");
+        prop.load(file);
         switch (country) {
             case "KSA":
-                UiActions.driver.navigate().to("https://subscribe.stctv.com/sa-en");
+                UiActions.driver.navigate().to(prop.getProperty("KSA"));
                 break;
             case "Bahrain":
-                UiActions.driver.navigate().to("https://subscribe.stctv.com/bh-en");
+                UiActions.driver.navigate().to(prop.getProperty("BAHRAIN"));
                 break;
             case "Kuwait":
-                UiActions.driver.navigate().to("https://subscribe.stctv.com/kw-en");
+                UiActions.driver.navigate().to(prop.getProperty("Kuwait"));
                 break;
             default:
                 System.out.println("Can not reach the navigation url");
@@ -25,16 +34,16 @@ public class SubscriptionPage {
         UiActions.driver.manage().window().maximize();
     }
 
-    public void SelectNavigationUrl(String country) {
+    public void SelectNavigationUrl(String country) throws IOException {
         SelectCountryUrl(country);
     }
 
     public String GetCountryName() {
-        return UiActions.getTextFromElement(By.id("country-btn"));
+        return UiActions.getTextFromElement(countryButtonLocator);
     }
 
     public String GetSubscriptionPageTitle() {
-        return UiActions.getTextFromElement(By.xpath("//h2[@class='mobile-hidden' and contains(.,'Choose Your Plan')]"));
+        return UiActions.getTextFromElement(subscriptionPageTitleLocator);
     }
 
     public String GetPackageTypes() {
@@ -46,7 +55,7 @@ public class SubscriptionPage {
     }
 
     public String GetCurrency() {
-        String price = UiActions.getTextFromElement(By.id("currency-lite"));
+        String price = UiActions.getTextFromElement(currencyLocator);
         return extractCurrencyFromPrice(price);
     }
 

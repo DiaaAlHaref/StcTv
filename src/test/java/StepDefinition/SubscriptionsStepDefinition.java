@@ -1,16 +1,21 @@
 package StepDefinition;
 
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
+import org.testng.Assert;
 import pages.SubscriptionPage;
 
+import java.io.IOException;
+
 public class SubscriptionsStepDefinition {
+
     SubscriptionPage subscriptionPage = new SubscriptionPage();
 
+
     @Given("user navigate to stc tv subscription page for {string}")
-    public void userNavigateToStcTvSubscriptionPage(String country) {
+    public void userNavigateToStcTvSubscriptionPage(String country) throws IOException {
         subscriptionPage.SelectNavigationUrl(country);
     }
 
