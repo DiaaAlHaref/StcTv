@@ -11,13 +11,19 @@ pipeline{
     stage("build"){
       steps{
          echo 'build successful'
-         sh "mvn clean test"
+         sh 'mvn -B -DskipTests clean package'
       } 
     }
     stage("test"){
       steps{
-        echo 'test successful'
+        echo 'test successful
+        sh "mvn clean test"
       } 
+      post {
+            always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
     }
     stage("deploy"){
       steps{
