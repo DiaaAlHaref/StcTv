@@ -15,7 +15,7 @@ pipeline{
     stage("test"){
       steps{
         echo 'test successful'
-        bat "mvn -D clean test"
+        sh "mvn -D clean test"
       } 
     }
     stage("deploy"){
