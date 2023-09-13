@@ -9,7 +9,9 @@ import org.testng.annotations.DataProvider;
         features = "src/test/java/features",
         glue = {"StepDefinition"},
         monochrome = true,
-        plugin = {"pretty", "html:target/cucumber-reports/CucumberTestReport.json"})
+        plugin = {"pretty",
+                "json:target/cucumber-reports/Subscription.json",
+                "html:target/cucumber-reports/Subscription.html"})
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 
