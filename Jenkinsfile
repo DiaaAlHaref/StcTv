@@ -5,18 +5,16 @@ pipeline{
   stages{
     stage("build"){
       steps{
-        
+      } 
     }
-    stage("test"){
+    stage("build"){
       steps{
-          echo ' Test build is successful'
-      }
-     stage("deploy"){
-      steps{
-        
-      }
-     }
+        echo 'test successful'
+      } 
     }
-   }
-  }
+    stage("build"){
+      steps{
+      } 
+    }
+  }   
 }
