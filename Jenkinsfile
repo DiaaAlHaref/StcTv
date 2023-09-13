@@ -5,6 +5,7 @@ pipeline{
   stages{
     stage("build"){
       steps{
+         echo 'build successful'
       } 
     }
     stage("test"){
@@ -14,6 +15,7 @@ pipeline{
     }
     stage("deploy"){
       steps{
+         echo 'deploy successful'
       } 
     }
   }   
