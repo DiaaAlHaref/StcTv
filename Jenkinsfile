@@ -15,7 +15,7 @@ pipeline{
     }
     stage("test"){
       steps{
-        sh 'mvn -Dmaven.test.failure.ignore=true install'
+        bash 'mvn -Dmaven.test.failure.ignore=true install'
         echo 'test successful'
       } 
     }
