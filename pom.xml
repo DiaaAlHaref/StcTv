@@ -430,7 +430,7 @@
                             <projectName>Stc</projectName>
                             <skip>false</skip>
                             <outputDirectory>reports/CucumberReports/cucumber-reports</outputDirectory>
-                            <inputDirectory>target/cucumber-reports.html</inputDirectory>
+                            <inputDirectory>target/cucumber-reports</inputDirectory>
                             <jsonFiles>
                                 <param>**/*.json</param>
                             </jsonFiles>
