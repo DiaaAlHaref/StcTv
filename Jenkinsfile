@@ -1,11 +1,11 @@
 pipeline{
 
-  "Windows": {
-        node('Windows') 
-        { 
-            jdk'OpenJDK17'
+  agent { 
+        docker { 
+            image  'windows10'
+                }
+            }
         }
-    }
   
   tools { 
         maven 'maven 3.9.4'  
