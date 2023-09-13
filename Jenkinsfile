@@ -11,13 +11,11 @@ pipeline{
     stage("build"){
       steps{
          echo 'build successful'
+         sh "mvn clean test"
       } 
     }
     stage("test"){
       steps{
-        withMaven {
-          sh "mvn clean test"
-        } 
         echo 'test successful'
       } 
     }
