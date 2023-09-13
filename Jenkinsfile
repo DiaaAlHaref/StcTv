@@ -19,11 +19,6 @@ pipeline{
         echo 'test successful
         sh "mvn clean test"
       } 
-      post {
-            always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
     }
     stage("deploy"){
       steps{
