@@ -1,10 +1,6 @@
 pipeline{
 
-  agent { 
-        docker { 
-            image  'mcr.microsoft.com/windows'
-                }
-        }
+  agent any 
   tools { 
         maven 'maven 3.9.4'  
     }
